@@ -17,3 +17,5 @@ def get_all_files_by_functionality(device_number, functionality_number):
         full_path = f'{device_folder_name}/{device_number}_{functionality_number}_{current_iteration}.{file_extension}'
         all_paths.append(full_path)
     return all_paths
+
+
