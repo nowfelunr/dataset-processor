@@ -146,18 +146,19 @@ def generate_ten_matrices():
     for func_no in functionality_numbers:
         for dev_no in devices:
             files = get_all_files_by_functionality(device_number=dev_no, functionality_number=func_no)   
-            for file in files:
-                
-
+            for file in files: 
                 file_name = file.split('/')[-1]
                 file_name = file_name.split('.')[0]
                 tcp_data = command_exec(file, tcp_protocol_features)
                 d = process_feature_json(tcp_data, tcp_protocol_features)
                 d = np.array(d)
+                # print(len(d[0]))
+                # print(len(tcp_protocol_features))
+                # exit()
                 # print(d[:, 0])
                 current_feature_data = [file_name]
-                for i in range(1, len(tcp_protocol_features)):
-                    curr_col = d[:, i]
+                for i in range(0, len(tcp_protocol_features)):
+                    curr_col = d[:, i+1]
 
                     mean = get_mean(curr_col)
                     median = get_median(curr_col)
